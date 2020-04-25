@@ -15,22 +15,29 @@
                             var titles = text.split(',');
                             //console.log(titles[1])
                             for (var j=1;j<13;j++){
+
                                 var table = document.getElementById("table"+j);
                                 var row = 0;
-                                for(var i = 1; i<16; i++){
+                                var nums = getRandomNumber();
+                                for(var i = 1; i<=nums.length; i++){
 
-                                    num = Math.floor(Math.random() * (70 - 0) ) + 0;
-                                    var title = titles[num];
-                                    console.log("row "+row)
-                                    console.log(i)
-                                    console.log(table.rows[row].cells["cell"+i])
+                                    var title = titles[nums[i-1]];
+
                                     table.rows[row].cells["cell"+i].innerHTML=title;
                                     if(i%5 == 0) {
-
                                         row++;
                                     }
                                 }
                             }
+                        }
+
+                        function getRandomNumber() {
+                            const nums = new Set();
+                            while(nums.size !== 15) {
+                                nums.add(Math.floor(Math.random() * (70 - 0) ) + 0);
+                            }
+                            return Array.from(nums);
+
                         }
 
                         function printDiv() {
@@ -58,14 +65,14 @@
                 </script>
                 <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
             </head>
-            <body >
+            <body>
                 <h1 align="center">Housie Ticket Generator</h1>
                  <h4 align="center"><a href="#" id="newCard" >Click me for a new card</a></h4>
          <h4 align="center"><a href="#" id="printBut" >Print</a></h4>
                 <div class= "header"></div>
         
          
-        <div id="printarea">
+        <div id="printarea" align="center">
         <table id="BigTable">
         <tr> 
             <td>
